@@ -1,0 +1,32 @@
+:root { color-scheme: dark; --bg: #0f1117; --panel: #171a22; --line: #2a2f3a; --text: #e6e8ee; --muted: #9aa3b2; --accent: #7cc4ff; }
+[hidden] { display: none !important; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+header { padding: 20px 24px 8px; max-width: 1200px; margin: 0 auto; }
+h1 { margin: 0 0 4px; font-size: 1.5rem; }
+header p { margin: 0; color: var(--muted); max-width: 70ch; }
+a { color: var(--accent); }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; padding: 16px 24px 24px; max-width: 1200px; margin: 0 auto; }
+.stage { position: relative; }
+canvas { display: block; width: 100%; height: min(70vh, 640px); border: 1px solid var(--line); border-radius: 10px; background: #0b0d12; touch-action: none; cursor: grab; }
+canvas:active { cursor: grabbing; }
+canvas:focus-visible, input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hint { margin: 6px 0 0; color: var(--muted); font-size: 0.85rem; }
+.nogl { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 24px; text-align: center; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 14px; align-self: start; }
+fieldset { border: 1px solid var(--line); border-radius: 8px; margin: 0; padding: 8px 12px 10px; }
+legend { color: var(--muted); font-size: 0.85rem; padding: 0 4px; }
+.modes label { display: block; padding: 2px 0; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: center; }
+.row input[type=range], .row select { grid-column: 1 / -1; width: 100%; }
+.colours { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.colours label { display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; color: var(--muted); }
+input[type=color] { width: 44px; height: 32px; border: 1px solid var(--line); border-radius: 6px; background: none; padding: 2px; }
+select, button { font: inherit; color: var(--text); background: #0f1117; border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+button { cursor: pointer; }
+button:hover { border-color: var(--accent); }
+.check { display: flex; gap: 8px; align-items: center; }
+section { display: flex; flex-direction: column; gap: 12px; }
+section p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+output { color: var(--accent); font-variant-numeric: tabular-nums; }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; } canvas { height: 60vh; } }

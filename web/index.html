@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Utah teapot rendered with WebGL 2: Bezier-patch wireframe, Blinn-Phong lighting and sphere-mapped textures.">
+  <title>Teapot Shader — WebGL 2</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Teapot Shader</h1>
+    <p>The Utah teapot built from its 32 Bezier patches and rendered three ways, ported from my 2017
+      OpenGL coursework to WebGL 2. <a href="https://github.com/Adit12T/Teapot-Shader">Source on GitHub</a>.</p>
+  </header>
+
+  <main>
+    <div class="stage">
+      <canvas id="view" tabindex="0" aria-label="3D teapot. Drag to rotate, shift-drag to pan, scroll to zoom. When focused, arrow keys rotate, plus and minus zoom, R resets the view."></canvas>
+      <p id="nogl" class="nogl" hidden>Your browser doesn't support WebGL 2, so the teapot can't be drawn.</p>
+      <p class="hint">Drag to rotate · shift-drag to pan · scroll to zoom · arrow keys when focused</p>
+    </div>
+
+    <form class="panel" id="controls" aria-label="Rendering controls">
+      <fieldset class="modes">
+        <legend>Mode</legend>
+        <label><input type="radio" name="mode" value="wire"> Wireframe patches</label>
+        <label><input type="radio" name="mode" value="phong" checked> Lighting</label>
+        <label><input type="radio" name="mode" value="texture"> Textures</label>
+      </fieldset>
+
+      <label class="row">Subdivisions per patch <output id="subOut">10</output>
+        <input type="range" id="subdivisions" min="1" max="24" value="10"></label>
+
+      <section data-mode="wire">
+        <p>Each patch is a 4×4 grid of control points. The mesh is evaluated with Bernstein polynomials at the
+          chosen number of steps; fewer steps show the patch structure.</p>
+      </section>
+
+      <section data-mode="phong">
+        <label class="row">Preset
+          <select id="preset">
+            <option value="">Custom</option>
+            <option value="gold">Gold</option>
+            <option value="plastic" selected>Blue plastic</option>
+            <option value="clay">Clay</option>
+            <option value="pearl">Pearl</option>
+          </select></label>
+        <label class="row">Light
+          <select id="lightType"><option value="point">Point light</option><option value="distant">Distant light</option></select></label>
+        <fieldset class="colours">
+          <legend>Light</legend>
+          <label>Ambient <input type="color" id="la"></label>
+          <label>Diffuse <input type="color" id="ld"></label>
+          <label>Specular <input type="color" id="ls"></label>
+        </fieldset>
+        <fieldset class="colours">
+          <legend>Material</legend>
+          <label>Ambient <input type="color" id="ma"></label>
+          <label>Diffuse <input type="color" id="md"></label>
+          <label>Specular <input type="color" id="ms"></label>
+        </fieldset>
+        <label class="row">Shininess <output id="shinOut"></output>
+          <input type="range" id="shininess" min="1" max="200"></label>
+      </section>
+
+      <section data-mode="texture">
+        <label class="row">Texture
+          <select id="texture">
+            <option value="marbles">Marble</option>
+            <option value="chess">Chess board</option>
+            <option value="chrome">Chrome</option>
+            <option value="diamond">Blue diamond</option>
+            <option value="default">Default</option>
+          </select></label>
+        <label class="check"><input type="checkbox" id="showCone" checked> Show textured cone</label>
+        <p>Sphere mapping: each pixel looks up the texture with its reflection vector, the way OpenGL's
+          <code>GL_SPHERE_MAP</code> texture generation did in the original.</p>
+      </section>
+
+      <label class="check"><input type="checkbox" id="autoRotate"> Rotate automatically</label>
+      <button type="button" id="reset">Reset view</button>
+    </form>
+  </main>
+</body>
+</html>

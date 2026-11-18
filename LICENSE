@@ -1,0 +1,15 @@
+Copyright (c) 2017-2026 Aditya Tripathi. All rights reserved.
+
+The source code in this repository written by Aditya Tripathi is published for viewing only.
+No permission is granted to copy, modify, distribute or use it, in whole or in part, without
+prior written permission from the copyright holder.
+
+Third-party material keeps its own terms and is not covered by the notice above:
+
+- original/include/ (Angel.h, CheckError.h, mat.h, vec.h, Shapes/Teapot.h) and the InitShader.cpp
+  files come from the example code for E. Angel and D. Shreiner, "Interactive Computer Graphics",
+  6th edition, Addison-Wesley, 2012.
+- The Utah teapot geometry (web/teapot-data.js, converted from Shapes/Teapot.h) was created by
+  Martin Newell at the University of Utah in 1975.
+- original/*/loadModels.cpp is modified from the Wikibooks tutorial "OpenGL Programming/Modern
+  OpenGL Tutorial Load OBJ" (CC BY-SA).
