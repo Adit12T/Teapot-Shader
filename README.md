@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Adit12T/Teapot-Shader/actions/workflows/ci.yml/badge.svg)](https://github.com/Adit12T/Teapot-Shader/actions/workflows/ci.yml)
 
-**Live demo: <https://adit12t.github.io/Teapot-Shader/>**
+**Live demo: <https://adit12t.github.io/demos/teapot/>**
 
 The Utah teapot built from its 32 Bezier patches and rendered three ways, in the browser with
 **WebGL 2**. It's a port of three OpenGL projects I wrote for a computer graphics course in my MS at the
